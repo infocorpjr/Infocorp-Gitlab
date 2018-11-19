@@ -1,12 +1,10 @@
 <template>
     <section>
         <h2 class="title is-2">Todos os posts</h2>
-
         <div class="animated shake notification is-danger has-text-centered" v-if="error">
             <button class="delete" v-on:click="error=false"></button>
             Houve um erro ao tentar recuperar os dados !
         </div>
-
         <table class="table is-striped">
             <thead>
             <tr>
@@ -16,8 +14,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="animated fadeIn" v-for="post in posts">
-                <td>{{post.id}}</td>
+            <tr class="animated fadeIn" v-for="(post, index) in posts" v-bind:key="post.id">
+                <td>{{index+1}}</td>
                 <td>{{post.title}}</td>
                 <td>{{post.body}}</td>
             </tr>
@@ -64,7 +62,7 @@
                 .then(function (response) {
                     _self.posts = response.data;
                 })
-                .catch(function (e) {
+                .catch(function () {
                     _self.error = true;
                 });
         }

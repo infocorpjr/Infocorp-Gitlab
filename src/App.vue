@@ -4,21 +4,24 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <router-link class="navbar-item" to="/">
-                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                    <img src="img/icons/apple-icon-114x114.png">
                 </router-link>
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                   data-target="navbarBasicExample">
+                   @click="collapsed=!collapsed"
+                   v-bind:class="{ 'is-active': collapsed }">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-            <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-menu" v-bind:class="{ 'is-active': collapsed }">
                 <div class="navbar-start">
-                    <router-link class="navbar-item" to="/">Home</router-link>
-                    <a class="navbar-item">
-                        Documentation
-                    </a>
+                    <router-link class="navbar-item" to="/">
+                        Home
+                    </router-link>
+                    <router-link class="navbar-item" to="/group">
+                        Group
+                    </router-link>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
                             More
@@ -58,3 +61,20 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        data: function () {
+            return {
+                collapsed: !true
+            }
+        }
+    };
+</script>
+
+<style scoped>
+    .navbar-menu {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+</style>

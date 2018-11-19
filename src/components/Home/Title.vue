@@ -2,8 +2,17 @@
     <section class="hero">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title">Infocorp Gitlab</h1>
-                <h2 class="subtitle">{{msg}}</h2>
+                <div class="columns is-vertical-center">
+                    <div class="column">
+                        <img class="animated rotateIn" src="img/icons/apple-icon-180x180.png"/>
+                    </div>
+                    <div class="column">
+                        <h1 class="animated fadeIn title">
+                            <b class="has-text-link">Infocorp</b> Gitlab
+                        </h1>
+                        <h2 class="animated fadeIn subtitle">{{msg}}</h2>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

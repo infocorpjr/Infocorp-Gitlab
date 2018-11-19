@@ -1,5 +1,5 @@
 <template>
-    <Title msg="Teste"/>
+    <Title msg="- Aplicação de integração com Gitlab API"/>
 </template>
 
 <script>
