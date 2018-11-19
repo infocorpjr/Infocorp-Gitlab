@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="columns is-vertical-center">
                     <div class="column">
-                        <img class="animated rotateIn" src="img/icons/apple-icon-180x180.png"/>
+                        <img src="img/icons/apple-icon-180x180.png"/>
                     </div>
                     <div class="column">
                         <h1 class="animated fadeIn title">

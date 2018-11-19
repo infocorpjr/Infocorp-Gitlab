@@ -14,6 +14,11 @@ export default new Router({
             component: Home
         },
         {
+            path: '/group',
+            name: 'group',
+            component: () => import('./views/Group.vue')
+        },
+        {
             path: '/post',
             name: 'post',
             component: () => import('./views/Post.vue')
