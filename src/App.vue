@@ -39,7 +39,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
@@ -68,6 +67,9 @@
             return {
                 collapsed: !true
             }
+        },
+        mounted: function () {
+            // alert(this.$cookies.get('__token'));
         }
     };
 </script>

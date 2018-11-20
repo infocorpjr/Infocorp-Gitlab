@@ -15,8 +15,13 @@ export default new Router({
         },
         {
             path: '/group',
-            name: 'group',
-            component: () => import('./views/Group.vue')
+            name: 'group.index',
+            component: () => import('./views/group/GroupIndex.vue')
+        },
+        {
+            path: '/group/:group',
+            name: 'group.show',
+            component: () => import('./views/group/GroupShow.vue')
         },
         {
             path: '/post',
