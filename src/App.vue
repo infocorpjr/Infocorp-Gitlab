@@ -4,7 +4,7 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <router-link class="navbar-item" to="/">
-                    <img src="img/icons/apple-icon-114x114.png">
+                    <img src="/img/icons/apple-icon-114x114.png">
                 </router-link>
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                    @click="collapsed=!collapsed"
@@ -58,6 +58,7 @@
             <!-- View -->
             <router-view/>
         </div>
+        <div class="animated fadeIn requesting" v-if="requesting">Solicitando informações da API ...</div>
     </div>
 </template>
 
@@ -65,18 +66,54 @@
     export default {
         data: function () {
             return {
-                collapsed: !true
+                requesting: 0,
+                collapsed: false
             }
         },
-        mounted: function () {
-            // alert(this.$cookies.get('__token'));
+        beforeCreate: function () {
+            let vm = this;
+            // Adiciona interceptadores para requisições feitas pelo Axios, disponível em $http.
+            // Add a request interceptor
+            this.$http.interceptors.request.use(function (config) {
+                vm.requesting++;
+                console.log('Interceptors / Request', config);
+                // Do something before request is sent
+                return config;
+            }, function (error) {
+                // Do something with request error
+                return Promise.reject(error);
+            });
+            // Add a response interceptor
+            this.$http.interceptors.response.use(function (response) {
+                vm.requesting--;
+                console.log('Interceptors / Response', response);
+                // Do something with response data
+                return response;
+            }, function (error) {
+                // Do something with response error
+                return Promise.reject(error);
+            });
         }
     };
 </script>
 
 <style scoped>
+    .app {
+        border-top: 5px solid #8A4D76;
+    }
+
     .navbar-menu {
         -webkit-box-shadow: none;
         box-shadow: none;
+    }
+
+    .requesting {
+        right: 1%;
+        bottom: 2%;
+        padding: 4px 8px;
+        background-color: #8A4D76;
+        color: white;
+        position: fixed;
+        z-index: 999;
     }
 </style>
